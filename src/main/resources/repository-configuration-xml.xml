@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="tweetRepository" class="com.kushmyruk.repository.InMemTweetRepository" init-method="init"/>
+
+    <bean name="tweet" class="com.kushmyruk.domain.Tweet">
+        <constructor-arg type="java.lang.Long" value="1"/>
+        <constructor-arg type="java.lang.String" value="TweetOne"/>
+        <constructor-arg type="com.kushmyruk.domain.User">
+            <null />
+        </constructor-arg>
+    </bean>
+
+    <bean name="tweet2" class="com.kushmyruk.domain.Tweet">
+        <constructor-arg type="java.lang.Long" value="2"/>
+        <constructor-arg type="java.lang.String" value="TweetTwo"/>
+        <constructor-arg type="com.kushmyruk.domain.User">
+            <null />
+        </constructor-arg>
+    </bean>
+
+</beans>
