@@ -40,18 +40,10 @@ public class IoCRunner {
         Config config = new JavaMapConfig(beanDescriptions);
         Context context = new ApplicationContext(config);
 
-        Tweet tweet1 = (Tweet) context.getBean("tweet");
-        Tweet tweet2 = (Tweet) context.getBean("tweet");
         TweetService tweetService = (TweetService) context.getBean("tweetService");
         TweetRepository tweetRepository = (TweetRepository) context.getBean("tweetRepository");
-        Tweet tweet3 = tweetService.newTweet();
 
-        System.out.println(tweet1);
-        System.out.println(tweet2);
-        System.out.println(tweet3);
-
-
-        System.out.println(tweetService.getTweet() == tweetService.getTweet());
+        System.out.println(tweetService.newTweet() == tweetService.newTweet());
 
     }
 }

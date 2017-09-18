@@ -9,6 +9,6 @@
     <bean id="tweetService" class="com.kushmyruk.service.SimpleTweetService">
         <constructor-arg ref="tweetRepository"/>
         <constructor-arg ref="tweet"/>
-        <lookup-method name="newTweet"/>
     </bean>
+
 </beans>

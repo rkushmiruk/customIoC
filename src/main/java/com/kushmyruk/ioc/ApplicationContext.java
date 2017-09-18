@@ -1,5 +1,8 @@
 package com.kushmyruk.ioc;
 
+import com.kushmyruk.service.PrototypeTweetServiceProxy;
+import com.kushmyruk.service.TweetService;
+
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.stream.Stream;
@@ -43,6 +46,9 @@ public class ApplicationContext implements Context {
         beanBuilder.callPostConstructAnnotatedMethod();
         beanBuilder.callInitMethod();
         beanBuilder.benchmarkProxy();
+        if (Objects.equals(bd.getBeanName(), "tweetService")) {
+            beanBuilder.createTweetServiceProxy();
+        }
         return beanBuilder.build();
     }
 
@@ -138,6 +144,10 @@ public class ApplicationContext implements Context {
 
         public Object build() {
             return bean;
+        }
+
+        public void createTweetServiceProxy() {
+            bean = new PrototypeTweetServiceProxy((TweetService) bean, ApplicationContext.this).createProxy();
         }
     }
 

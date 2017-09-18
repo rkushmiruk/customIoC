@@ -4,15 +4,8 @@ public class Tweet {
     private Long tweetId;
     private String txt;
     private User user;
-    private static long count = 0L;
 
     public Tweet() {
-    }
-
-    public void init(){
-        this.tweetId = ++count;
-        this.txt = "tweetty";
-        this.user = new User();
     }
 
     public Tweet(Long tweetId, String txt, User user) {
@@ -20,6 +13,8 @@ public class Tweet {
         this.txt = txt;
         this.user = user;
     }
+
+
 
     public Long getTweetId() {
         return tweetId;

@@ -1,10 +1,10 @@
 package com.kushmyruk.service;
 
 import com.kushmyruk.domain.Tweet;
-import com.kushmyruk.ioc.Lookup;
 import com.kushmyruk.repository.TweetRepository;
 
 public class SimpleTweetService implements TweetService {
+
     private final TweetRepository tweetRepository;
     private Tweet tweet;
 
@@ -24,17 +24,8 @@ public class SimpleTweetService implements TweetService {
     }
 
     @Override
-    @Lookup(className = "Tweet")
     public Tweet newTweet() {
         return new Tweet();
-    }
-
-    public Tweet getTweet() {
-        return tweet;
-    }
-
-    public void setTweet(Tweet tweet) {
-        this.tweet = tweet;
     }
 
     @Override

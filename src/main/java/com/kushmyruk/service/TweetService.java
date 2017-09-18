@@ -9,7 +9,7 @@ public interface TweetService {
 
     TweetRepository getRepository();
 
-    Tweet getTweet();
-
     Tweet newTweet();
+
+
 }

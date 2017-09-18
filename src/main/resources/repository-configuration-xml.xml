@@ -10,16 +10,21 @@
         <constructor-arg type="java.lang.Long" value="1"/>
         <constructor-arg type="java.lang.String" value="TweetOne"/>
         <constructor-arg type="com.kushmyruk.domain.User">
-            <null />
+            <null/>
         </constructor-arg>
+
+    </bean>
+
+    <bean name="user" class="com.kushmyruk.domain.User" lazy-init="true">
+        <constructor-arg type="com.kushmyruk.domain.Tweet" ref="tweet"/>
     </bean>
 
     <bean name="tweet2" class="com.kushmyruk.domain.Tweet">
         <constructor-arg type="java.lang.Long" value="2"/>
         <constructor-arg type="java.lang.String" value="TweetTwo"/>
-        <constructor-arg type="com.kushmyruk.domain.User">
-            <null />
-        </constructor-arg>
+        <constructor-arg type="com.kushmyruk.domain.User" ref="user"/>
     </bean>
+
+    <bean name="tweet3" class="com.kushmyruk.domain.Tweet" />
 
 </beans>
