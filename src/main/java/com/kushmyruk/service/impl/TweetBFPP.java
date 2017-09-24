@@ -1,4 +1,4 @@
-package com.kushmyruk.service;
+package com.kushmyruk.service.impl;
 
 import com.kushmyruk.domain.User;
 import org.springframework.beans.BeansException;

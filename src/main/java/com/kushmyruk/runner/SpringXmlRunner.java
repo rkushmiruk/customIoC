@@ -1,4 +1,4 @@
-package com.kushmyruk;
+package com.kushmyruk.runner;
 
 import com.kushmyruk.domain.Tweet;
 import com.kushmyruk.repository.TweetRepository;

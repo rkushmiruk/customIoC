@@ -1,6 +1,6 @@
 package com.kushmyruk.ioc;
 
-import com.kushmyruk.service.PrototypeTweetServiceProxy;
+import com.kushmyruk.service.impl.PrototypeTweetServiceProxy;
 import com.kushmyruk.service.TweetService;
 
 import java.lang.reflect.*;

@@ -11,5 +11,13 @@ public interface TweetService {
 
     Tweet newTweet();
 
+    Integer countLike();
+
+    Integer countRetweet();
+
+    Integer textLength();
+
+    Tweet reTweet(String txt, Tweet tweet);
+
 
 }

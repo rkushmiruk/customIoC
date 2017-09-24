@@ -1,4 +1,4 @@
-package com.kushmyruk;
+package com.kushmyruk.runner;
 
 import com.kushmyruk.domain.Tweet;
 import com.kushmyruk.ioc.ApplicationContext;
@@ -7,7 +7,7 @@ import com.kushmyruk.ioc.Context;
 import com.kushmyruk.ioc.JavaMapConfig;
 import com.kushmyruk.repository.InMemTweetRepository;
 import com.kushmyruk.repository.TweetRepository;
-import com.kushmyruk.service.SimpleTweetService;
+import com.kushmyruk.service.impl.SimpleTweetService;
 import com.kushmyruk.service.TweetService;
 
 import java.util.HashMap;

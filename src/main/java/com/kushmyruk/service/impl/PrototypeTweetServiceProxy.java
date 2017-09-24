@@ -1,6 +1,7 @@
-package com.kushmyruk.service;
+package com.kushmyruk.service.impl;
 
 import com.kushmyruk.ioc.Context;
+import com.kushmyruk.service.TweetService;
 
 import java.lang.reflect.Proxy;
 

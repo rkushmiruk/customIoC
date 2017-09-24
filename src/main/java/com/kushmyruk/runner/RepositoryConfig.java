@@ -1,4 +1,4 @@
-package com.kushmyruk;
+package com.kushmyruk.runner;
 
 import com.kushmyruk.repository.InMemTweetRepository;
 import com.kushmyruk.repository.TweetRepository;

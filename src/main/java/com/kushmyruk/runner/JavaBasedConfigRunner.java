@@ -1,4 +1,4 @@
-package com.kushmyruk;
+package com.kushmyruk.runner;
 
 import com.kushmyruk.service.TweetService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

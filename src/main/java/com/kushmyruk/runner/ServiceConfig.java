@@ -1,8 +1,8 @@
-package com.kushmyruk;
+package com.kushmyruk.runner;
 
 import com.kushmyruk.domain.Tweet;
 import com.kushmyruk.repository.TweetRepository;
-import com.kushmyruk.service.SimpleTweetService;
+import com.kushmyruk.service.impl.SimpleTweetService;
 import com.kushmyruk.service.TweetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
