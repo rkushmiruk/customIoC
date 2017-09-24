@@ -1,31 +1,29 @@
 package com.kushmyruk.repository;
 
 import com.kushmyruk.domain.Tweet;
-import com.kushmyruk.ioc.BenchMark;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 
+@Repository("tweetRepository")
 public class InMemTweetRepository implements TweetRepository {
+
     private List<Tweet> tweets;
 
-    public void init(){
+    @PostConstruct
+    public void init() {
         tweets = Arrays.asList(
-                new Tweet(1L, "First Mesegge", null),
-                new Tweet(2L, "Second Mesg", null)
+                new Tweet("First Mesg", null),
+                new Tweet("Second Mesg", null)
+
         );
+
     }
 
     @Override
-    @BenchMark
     public Iterable<Tweet> allTweets() {
         return tweets;
-    }
-
-    @Override
-    public String toString() {
-        return "InMemTweetRepository{" +
-                "tweets=" + tweets +
-                '}';
     }
 }

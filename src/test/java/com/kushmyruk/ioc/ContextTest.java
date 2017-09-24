@@ -274,7 +274,7 @@ public class ContextTest {
         String methodToBenchMark(String str);
     }
 
-    public static class TestBeanWithConstructor implements ProxyTest  {
+    public static class TestBeanWithConstructor implements ProxyTest {
         private final TestBean proxyTest;
 
         public TestBeanWithConstructor(TestBean proxyTest) {

@@ -8,9 +8,8 @@ public class SimpleTweetService implements TweetService {
     private final TweetRepository tweetRepository;
     private Tweet tweet;
 
-    public SimpleTweetService(TweetRepository tweetRepository, Tweet tweet) {
+    public SimpleTweetService(TweetRepository tweetRepository) {
         this.tweetRepository = tweetRepository;
-        this.tweet = tweet;
     }
 
     @Override

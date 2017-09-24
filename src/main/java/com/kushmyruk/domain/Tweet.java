@@ -1,6 +1,7 @@
 package com.kushmyruk.domain;
 
 public class Tweet {
+
     private Long tweetId;
     private String txt;
     private User user;
@@ -8,17 +9,16 @@ public class Tweet {
     public Tweet() {
     }
 
-    public Tweet(Long tweetId, String txt, User user) {
-        this.tweetId = tweetId;
+    public Tweet(String txt, User user) {
         this.txt = txt;
         this.user = user;
     }
 
 
-
     public Long getTweetId() {
         return tweetId;
     }
+
 
     public void setTweetId(Long tweetId) {
         this.tweetId = tweetId;

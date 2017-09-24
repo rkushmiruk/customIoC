@@ -19,8 +19,6 @@ public class SpringXmlRunner {
 
         Tweet tweet = (Tweet) serviceContext.getBean("tweet");
         System.out.println(tweet);
-        Tweet tweet2 = (Tweet) serviceContext.getBean("tweet2");
-        System.out.println(tweet2);
 
         serviceContext.close();
         repoContext.close();

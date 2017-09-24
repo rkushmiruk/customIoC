@@ -32,9 +32,10 @@ public class IoCRunner {
                     put("tweet",
                             new HashMap<String, Object>() {{
                                 put("type", Tweet.class);
-                                put("isPrototype", true);
+                                put("isPrototype", false);
                             }}
                     );
+
                 }};
 
         Config config = new JavaMapConfig(beanDescriptions);
@@ -43,6 +44,8 @@ public class IoCRunner {
         TweetService tweetService = (TweetService) context.getBean("tweetService");
         TweetRepository tweetRepository = (TweetRepository) context.getBean("tweetRepository");
 
+        System.out.println(tweetService);
+        System.out.println(tweetRepository);
         System.out.println(tweetService.newTweet() == tweetService.newTweet());
 
     }

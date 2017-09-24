@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <import resource="repository-configuration-xml.xml"/>
+    <context:component-scan base-package="com.kushmyruk.service com.kushmyruk.domain">
+        <context:include-filter
+                type="annotation"
+                expression="com.kushmyruk.domain.MyTweet"/>
+    </context:component-scan>
 
-    <bean id="tweetService" class="com.kushmyruk.service.SimpleTweetService">
-        <constructor-arg ref="tweetRepository"/>
-        <constructor-arg ref="tweet"/>
+    <bean name="tweetRepository"
+          class="com.kushmyruk.repository.InMemTweetRepository"
+          init-method="init"/>
+
+    <bean class="com.kushmyruk.domain.UserFactoryBean"/>
+    <bean class="com.kushmyruk.service.BenchmarkPostprocessor"/>
+    <bean class="com.kushmyruk.service.TweetBFPP"/>
+
+    <bean name="tweetService" class="com.kushmyruk.service.SimpleTweetService">
+        <constructor-arg type="com.kushmyruk.repository.TweetRepository"
+        ref="tweetRepository"/>
+        <lookup-method name="newTweet" bean="tweet"/>
     </bean>
+
+    <bean name="tweet" class="com.kushmyruk.domain.Tweet"
+          scope="prototype">
+        <property name="user" value="${DefaultUserName}"/>
+    </bean>
+
+
+    <bean name="tweetParent" parent="tweet"/>
+    <alias name="tweet" alias="tweetParent"/>
 
 </beans>
