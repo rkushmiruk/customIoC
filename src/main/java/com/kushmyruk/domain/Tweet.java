@@ -1,18 +1,23 @@
 package com.kushmyruk.domain;
 
+import java.util.Date;
+import java.util.List;
+
 public class Tweet {
     private Long tweetId;
     private String txt;
     private User user;
     private int like;
-    private int retweet;
+    private int reTweet;
+    private List<String> replies;
+    private Date date;
 
     public Tweet(Tweet tweet) {
         this.tweetId = tweet.tweetId;
         this.txt = tweet.txt;
         this.user = tweet.user;
         this.like = tweet.like;
-        this.retweet = tweet.retweet;
+        this.reTweet = tweet.reTweet;
     }
 
     public Tweet() {
@@ -27,7 +32,7 @@ public class Tweet {
         this.txt = txt;
         this.user = user;
         this.like = like;
-        this.retweet = retweet;
+        this.reTweet = retweet;
     }
 
     public Long getTweetId() {
@@ -62,12 +67,53 @@ public class Tweet {
         this.like = like;
     }
 
-    public int getRetweet() {
-        return retweet;
+    public int getReTweet() {
+        return reTweet;
     }
 
-    public void setRetweet(int retweet) {
-        this.retweet = retweet;
+    public void setReTweet(int reTweet) {
+        this.reTweet = reTweet;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public List<String> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<String> replies) {
+        this.replies = replies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tweet tweet = (Tweet) o;
+
+        if (like != tweet.like) return false;
+        if (reTweet != tweet.reTweet) return false;
+        if (tweetId != null ? !tweetId.equals(tweet.tweetId) : tweet.tweetId != null) return false;
+        if (txt != null ? !txt.equals(tweet.txt) : tweet.txt != null) return false;
+        return user != null ? user.equals(tweet.user) : tweet.user == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = tweetId != null ? tweetId.hashCode() : 0;
+        result = 31 * result + (txt != null ? txt.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + like;
+        result = 31 * result + reTweet;
+        return result;
     }
 
     @Override
@@ -77,7 +123,7 @@ public class Tweet {
                 ", txt='" + txt + '\'' +
                 ", user=" + user +
                 ", like=" + like +
-                ", retweet=" + retweet +
+                ", reTweet=" + reTweet +
                 '}';
     }
 }

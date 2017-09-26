@@ -1,6 +1,7 @@
 package com.kushmyruk.service.impl;
 
 import com.kushmyruk.domain.Tweet;
+import com.kushmyruk.domain.User;
 import com.kushmyruk.repository.TweetRepository;
 import com.kushmyruk.service.TweetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,9 @@ import org.springframework.stereotype.Service;
 
 @Service("tweetService")
 public class SimpleTweetService implements TweetService {
+    private TweetRepository tweetRepository;
 
     @Autowired
-    private TweetRepository tweetRepository;
-    private Tweet tweet;
-
     public SimpleTweetService(TweetRepository tweetRepository) {
         this.tweetRepository = tweetRepository;
     }
@@ -28,37 +27,34 @@ public class SimpleTweetService implements TweetService {
     }
 
     @Override
+    public Tweet newTweet(String txt,User user) {
+        return new Tweet(txt, user);
+    }
+
+    @Override
     public Tweet newTweet() {
         return new Tweet();
     }
 
     @Override
-    public Integer countLike() {
+    public Integer countLike(Tweet tweet) {
         return tweet.getLike();
     }
 
     @Override
-    public Integer countRetweet() {
-        return tweet.getRetweet();
+    public Integer countRetweet(Tweet tweet) {
+        return tweet.getReTweet();
     }
 
     @Override
-    public Integer textLength() {
+    public Integer textLength(Tweet tweet) {
         return tweet.getTxt().length();
     }
 
-    public Tweet reTweet(String txt, Tweet tweet) {
-        Tweet retweet = new Tweet(tweet);
-        retweet.setTxt(tweet.getTxt() + " " + txt);
-        tweetRepository.allTweets().add(retweet);
-        return retweet;
+    @Override
+    public User showAuthor(Tweet tweet) {
+        return tweet.getUser();
     }
 
-    @Override
-    public String toString() {
-        return "SimpleTweetService{" +
-                "tweetRepository=" + tweetRepository +
-                ", tweet=" + tweet +
-                '}';
-    }
+
 }

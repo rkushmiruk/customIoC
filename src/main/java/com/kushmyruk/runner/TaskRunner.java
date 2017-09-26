@@ -24,16 +24,16 @@ public class TaskRunner {
 
         Tweet tweet = new Tweet("Tweet", user);
 
-        userService.giveLike(tweet);
-        userService.giveLike(tweet);
-        userService.giveLike(tweet);
-        userService.giveLike(tweet);
+        userService.like(tweet);
+        userService.like(tweet);
+        userService.like(tweet);
+        userService.like(tweet);
 
         System.out.println(tweet.getTxt());
 
         System.out.println(tweet.getLike());
 
-        Tweet retweet = userService.doRetweet("Retweet text", tweet);
+        Tweet retweet = userService.retweet("Retweet text", tweet);
 
         System.out.println(retweet.getTxt());
     }

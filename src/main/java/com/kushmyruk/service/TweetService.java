@@ -1,6 +1,7 @@
 package com.kushmyruk.service;
 
 import com.kushmyruk.domain.Tweet;
+import com.kushmyruk.domain.User;
 import com.kushmyruk.repository.TweetRepository;
 
 public interface TweetService {
@@ -9,15 +10,16 @@ public interface TweetService {
 
     TweetRepository getRepository();
 
+    Tweet newTweet(String txt,User user);
+
     Tweet newTweet();
 
-    Integer countLike();
+    Integer countLike(Tweet tweet);
 
-    Integer countRetweet();
+    Integer countRetweet(Tweet tweet);
 
-    Integer textLength();
+    Integer textLength(Tweet tweet);
 
-    Tweet reTweet(String txt, Tweet tweet);
-
+    User showAuthor(Tweet tweet);
 
 }

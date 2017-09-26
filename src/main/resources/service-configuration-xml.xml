@@ -18,7 +18,6 @@
           class="com.kushmyruk.repository.InMemTweetRepository"
           init-method="init"/>
 
-    <bean class="com.kushmyruk.domain.UserFactoryBean"/>
     <bean class="com.kushmyruk.service.impl.BenchmarkPostprocessor"/>
     <bean class="com.kushmyruk.service.impl.TweetBFPP"/>
 
