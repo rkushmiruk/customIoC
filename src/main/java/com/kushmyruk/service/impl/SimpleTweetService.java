@@ -27,13 +27,17 @@ public class SimpleTweetService implements TweetService {
     }
 
     @Override
-    public Tweet newTweet(String txt,User user) {
-        return new Tweet(txt, user);
+    public Tweet newTweet(String txt, User user) {
+        Tweet tweet = new Tweet(txt, user);
+        tweetRepository.allTweets().add(tweet);
+        return tweet;
     }
 
     @Override
     public Tweet newTweet() {
-        return new Tweet();
+        Tweet tweet = new Tweet();
+        tweetRepository.allTweets().add(tweet);
+        return tweet;
     }
 
     @Override

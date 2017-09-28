@@ -2,8 +2,10 @@ package com.kushmyruk.runner;
 
 import com.kushmyruk.domain.Tweet;
 import com.kushmyruk.repository.TweetRepository;
+import com.kushmyruk.service.UserService;
 import com.kushmyruk.service.impl.SimpleTweetService;
 import com.kushmyruk.service.TweetService;
+import com.kushmyruk.service.impl.SimpleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -57,4 +59,9 @@ public class ServiceConfig {
         return tweetService;
     }
 
+    @Bean
+    public UserService userService() {
+        UserService userService = new SimpleUserService();
+        return userService;
+    }
 }

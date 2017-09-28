@@ -1,6 +1,7 @@
 package com.kushmyruk.repository;
 
 import com.kushmyruk.domain.Tweet;
+import com.kushmyruk.domain.User;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -11,6 +12,7 @@ import java.util.List;
 public class InMemTweetRepository implements TweetRepository {
 
     private List<Tweet> tweets = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     @PostConstruct
     public void init() {

@@ -77,4 +77,20 @@ public class TweetServiceTest {
         assertEquals(6,actual);
     }
 
+    @Test
+    public void ZeroTxtLengthInTweetCount(){
+        Tweet tweet = tweetService.newTweet("",new User());
+        int actual = tweetService.textLength(tweet);
+        assertEquals(0,actual);
+    }
+
+    @Test
+    public void testUserSubscription(){
+        User subscriber = new User("subscriber");
+        User author = new User("author");
+        userService.subscribe(subscriber,author);
+
+        assertEquals(1, author.getSubscriptions().size());
+    }
+
 }

@@ -1,11 +1,12 @@
 package com.kushmyruk.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
     private Long id;
     private List<Tweet> reTweets;
-    private List<User> subscriptions;
+    private List<User> subscriptions = new ArrayList<>();
     private String name;
 
     public User(String name) {
