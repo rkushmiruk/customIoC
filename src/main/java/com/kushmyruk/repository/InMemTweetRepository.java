@@ -24,4 +24,9 @@ public class InMemTweetRepository implements TweetRepository {
     public List<Tweet> allTweets() {
         return tweets;
     }
+
+    @Override
+    public List<User> allUsers() {
+        return users;
+    }
 }

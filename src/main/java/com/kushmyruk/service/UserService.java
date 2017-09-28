@@ -3,7 +3,11 @@ package com.kushmyruk.service;
 import com.kushmyruk.domain.Tweet;
 import com.kushmyruk.domain.User;
 
+import java.util.List;
+
 public interface UserService {
+    User createNewUser(String name);
+
     void like(Tweet tweet);
 
     Tweet retweet(String txt, Tweet oldTweet);
@@ -12,7 +16,7 @@ public interface UserService {
 
     void reply(String txt, Tweet oldTweet);
 
-    Iterable<Tweet> wall(User user);
+    List<Tweet> wall(User user);
 
 
 }

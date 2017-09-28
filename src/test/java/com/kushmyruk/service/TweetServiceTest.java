@@ -28,7 +28,7 @@ public class TweetServiceTest {
     }
 
     @Test
-    public void getAllTweetsTest(){
+    public void getAllTweetsTest() {
         User user = new User("aaa");
         List<Tweet> tweets = new ArrayList<>();
         tweets.add(tweetService.newTweet("", user));
@@ -48,49 +48,39 @@ public class TweetServiceTest {
     }
 
     @Test
-    public void testNumberOfLikeInTweet(){
+    public void testNumberOfLikeInTweet() {
         Tweet tweet = tweetService.newTweet();
         userService.like(tweet);
         userService.like(tweet);
         userService.like(tweet);
         userService.like(tweet);
-
-        assertEquals(4,tweet.getLike());
+        assertEquals(4, tweet.getLike());
     }
 
     @Test
-    public void testNumberOfRetweetsInTweet(){
+    public void testNumberOfRetweetsInTweet() {
         Tweet tweet = tweetService.newTweet();
-        userService.retweet("",tweet);
-        userService.retweet("",tweet);
-        userService.retweet("",tweet);
-        userService.retweet("",tweet);
-        userService.retweet("",tweet);
+        userService.retweet("", tweet);
+        userService.retweet("", tweet);
+        userService.retweet("", tweet);
+        userService.retweet("", tweet);
+        userService.retweet("", tweet);
 
-        assertEquals(5,tweet.getReTweet());
+        assertEquals(5, tweet.getReTweet());
     }
 
     @Test
-    public void TxtLengthInTweetCount(){
-        Tweet tweet = tweetService.newTweet("Symbol",new User());
+    public void TxtLengthInTweetCount() {
+        Tweet tweet = tweetService.newTweet("Symbol", new User());
         int actual = tweetService.textLength(tweet);
-        assertEquals(6,actual);
+        assertEquals(6, actual);
     }
 
     @Test
-    public void ZeroTxtLengthInTweetCount(){
-        Tweet tweet = tweetService.newTweet("",new User());
+    public void ZeroTxtLengthInTweetCount() {
+        Tweet tweet = tweetService.newTweet("", new User());
         int actual = tweetService.textLength(tweet);
-        assertEquals(0,actual);
-    }
-
-    @Test
-    public void testUserSubscription(){
-        User subscriber = new User("subscriber");
-        User author = new User("author");
-        userService.subscribe(subscriber,author);
-
-        assertEquals(1, author.getSubscriptions().size());
+        assertEquals(0, actual);
     }
 
 }

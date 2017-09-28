@@ -2,19 +2,27 @@ package com.kushmyruk.service.impl;
 
 import com.kushmyruk.domain.Tweet;
 import com.kushmyruk.domain.User;
+import com.kushmyruk.repository.TweetRepository;
 import com.kushmyruk.service.TweetService;
 import com.kushmyruk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service("userService")
 public class SimpleUserService implements UserService {
-
-    @Autowired
     private TweetService tweetService;
+    private TweetRepository tweetRepository;
+
+    @Override
+    public User createNewUser(String name) {
+        User user = new User(name);
+        tweetRepository.allUsers().add(user);
+        return user;
+    }
 
     @Override
     public void like(Tweet tweet) {
@@ -40,13 +48,21 @@ public class SimpleUserService implements UserService {
     }
 
     @Override
-    public Iterable<Tweet> wall(User user) {
+    public List<Tweet> wall(User user) {
         List<Tweet> tweets;
-
         tweets = ((List<Tweet>) tweetService.allTweets()).stream()
+                .filter(e->e.getUser()!=null)
                 .filter(e -> e.getUser().equals(user))
                 .collect(Collectors.toList());
-
         return tweets;
+    }
+    @Autowired
+    public void setTweetService(TweetService tweetService) {
+        this.tweetService = tweetService;
+    }
+
+    @Autowired
+    public void setTweetRepository(TweetRepository tweetRepository) {
+        this.tweetRepository = tweetRepository;
     }
 }

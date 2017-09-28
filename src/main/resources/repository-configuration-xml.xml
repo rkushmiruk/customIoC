@@ -18,7 +18,6 @@
           class="com.kushmyruk.repository.InMemTweetRepository"
           init-method="init"/>
 
-
     <bean name="tweet" class="com.kushmyruk.domain.Tweet">
 
     </bean>

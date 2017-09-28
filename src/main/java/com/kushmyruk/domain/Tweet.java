@@ -1,5 +1,6 @@
 package com.kushmyruk.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class Tweet {
     private User user;
     private int like;
     private int reTweet;
-    private List<String> replies;
+    private List<String> replies = new ArrayList<>();
     private Date date;
 
     public Tweet(Tweet tweet) {
@@ -21,6 +22,10 @@ public class Tweet {
     }
 
     public Tweet() {
+    }
+
+    public Tweet(User user) {
+        this.user = user;
     }
 
     public Tweet(String txt, User user) {

@@ -32,8 +32,4 @@
         <property name="user" value="${DefaultUserName}"/>
     </bean>
 
-
-    <bean name="tweetParent" parent="tweet"/>
-    <alias name="tweet" alias="tweetParent"/>
-
 </beans>

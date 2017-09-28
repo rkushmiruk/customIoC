@@ -37,5 +37,10 @@ public class TaskRunner {
         Tweet retweet = userService.retweet("Retweet text", tweet);
 
         System.out.println(retweet.getTxt());
+
+        System.out.println(userService.wall(user));
+
+        User user1 = new User();
+
     }
 }
