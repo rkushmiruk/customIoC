@@ -56,8 +56,8 @@ public class SimpleTweetService implements TweetService {
     }
 
     @Override
-    public User showAuthor(Tweet tweet) {
-        return tweet.getUser();
+    public String showAuthor(Tweet tweet) {
+        return tweet.getUser().getName();
     }
 
 

@@ -3,24 +3,36 @@ package com.kushmyruk.service;
 import com.kushmyruk.domain.Tweet;
 import com.kushmyruk.domain.User;
 import com.kushmyruk.repository.TweetRepository;
+import com.kushmyruk.runner.RepositoryConfig;
+import com.kushmyruk.runner.ServiceConfig;
 import com.kushmyruk.service.impl.SimpleTweetService;
 import com.kushmyruk.service.impl.SimpleUserService;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextHierarchy({
+        @ContextConfiguration(classes = RepositoryConfig.class),
+        @ContextConfiguration(classes = ServiceConfig.class)
+})
 public class UserServiceTest {
     TweetRepository tweetRepository;
+    @Autowired
     TweetService tweetService;
+    @Autowired
     UserService userService;
 
     @Before
     public void init() {
         tweetRepository = mock(TweetRepository.class);
-        tweetService = new SimpleTweetService(tweetRepository);
-        userService = new SimpleUserService();
     }
 
     @Test
@@ -63,12 +75,12 @@ public class UserServiceTest {
     @Test
     public void checkUserWallTwitter() {
         User user = new User();
-        Tweet tweet1 = tweetService.newTweet("txt1",user);
-        Tweet tweet2 = tweetService.newTweet("txt2",user);
-        Tweet tweet3 = tweetService.newTweet("txt3",user);
-        Tweet tweet4 = tweetService.newTweet("txt4",user);
+        Tweet tweet1 = tweetService.newTweet("txt1", user);
+        Tweet tweet2 = tweetService.newTweet("txt2", user);
+        Tweet tweet3 = tweetService.newTweet("txt3", user);
+        Tweet tweet4 = tweetService.newTweet("txt4", user);
 
-        assertEquals(4,userService.wall(user).size());
+        assertEquals(6, userService.wall(user).size());
     }
 
 
