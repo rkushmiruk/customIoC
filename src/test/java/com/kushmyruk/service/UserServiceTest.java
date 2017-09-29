@@ -5,12 +5,12 @@ import com.kushmyruk.domain.User;
 import com.kushmyruk.repository.TweetRepository;
 import com.kushmyruk.runner.RepositoryConfig;
 import com.kushmyruk.runner.ServiceConfig;
-import com.kushmyruk.service.impl.SimpleTweetService;
 import com.kushmyruk.service.impl.SimpleUserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @ContextHierarchy({
         @ContextConfiguration(classes = RepositoryConfig.class),
         @ContextConfiguration(classes = ServiceConfig.class)
@@ -80,7 +81,7 @@ public class UserServiceTest {
         Tweet tweet3 = tweetService.newTweet("txt3", user);
         Tweet tweet4 = tweetService.newTweet("txt4", user);
 
-        assertEquals(6, userService.wall(user).size());
+        assertEquals(4, userService.wall(user).size());
     }
 
 

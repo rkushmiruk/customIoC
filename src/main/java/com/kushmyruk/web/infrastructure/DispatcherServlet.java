@@ -14,7 +14,18 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        webContext = new AnnotationConfigApplicationContext(WebInfConfig.class);
+        AnnotationConfigApplicationContext rootContext = (AnnotationConfigApplicationContext) getServletContext().getAttribute("rootContext");
+        String contextConfig = getInitParameter("contextConfig");
+        Class<?> webContextClass = null;
+        try {
+            webContextClass = (Class.forName(contextConfig));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        webContext = new AnnotationConfigApplicationContext();
+        webContext.setParent(rootContext);
+        webContext.register(webContextClass);
+        webContext.refresh();
     }
 
     @Override
@@ -31,7 +42,7 @@ public class DispatcherServlet extends HttpServlet {
         String beanName = beanNameByRequest(req);
         controller = (MyController) webContext.getBean(beanName);
         controller.handleRequest(req, res);
-    }
+}
 
     private String beanNameByRequest(HttpServletRequest req) {
         HandlerMapping handlerMapping =
