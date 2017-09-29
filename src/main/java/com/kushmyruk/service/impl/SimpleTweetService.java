@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service("tweetService")
 public class SimpleTweetService implements TweetService {
     private TweetRepository tweetRepository;
+    private final Integer MAX_TWEET_LENGTH = 40;
 
     @Autowired
     public SimpleTweetService(TweetRepository tweetRepository) {
@@ -28,6 +29,9 @@ public class SimpleTweetService implements TweetService {
 
     @Override
     public Tweet newTweet(String txt, User user) {
+        if(txt.length() > MAX_TWEET_LENGTH){
+            throw new RuntimeException();
+        }
         Tweet tweet = new Tweet(txt, user);
         tweetRepository.allTweets().add(tweet);
         return tweet;

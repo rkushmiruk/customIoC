@@ -76,6 +76,14 @@ public class TweetServiceTest {
         assertEquals(6, actual);
     }
 
+    @Test(expected = RuntimeException.class)
+    public void MaxTweetLengthTest(){
+        String message = "amdsmdasmdmasdmasmdasmdmasdmasmdamdmasmdasmasmdma" +
+                "admadmasmdamdamdmamdamdammadmasmdmadmamdamdamsdamdmamdamma";
+
+        tweetService.newTweet(message,new User());
+    }
+
     @Test
     public void ZeroTxtLengthInTweetCount() {
         Tweet tweet = tweetService.newTweet("", new User());
