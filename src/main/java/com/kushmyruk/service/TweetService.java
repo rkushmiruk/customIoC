@@ -20,6 +20,6 @@ public interface TweetService {
 
     Integer textLength(Tweet tweet);
 
-    User showAuthor(Tweet tweet);
+    String showAuthor(Tweet tweet);
 
 }

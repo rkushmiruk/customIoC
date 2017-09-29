@@ -16,8 +16,8 @@ public class InMemTweetRepository implements TweetRepository {
 
     @PostConstruct
     public void init() {
-        tweets.add(new Tweet("First Mesg", null));
-        tweets.add(new Tweet("Second Mesg", null));
+//        tweets.add(new Tweet("First Mesg", null));
+//        tweets.add(new Tweet("Second Mesg", null));
     }
 
     @Override
