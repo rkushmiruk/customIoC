@@ -42,5 +42,6 @@ public class JavaConfigTaskRunner {
         Tweet retweet = userService.retweet("Retweet text", tweet);
 
         System.out.println(retweet.getTxt());
+
     }
 }
